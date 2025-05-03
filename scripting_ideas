@@ -1,0 +1,10 @@
+#Install python virtual environment python3 -m virtualenv {project_name}
+
+python3 -m virtualenv .venv/random_venv
+
+
+# Install Node.js in virtual environment
+
+pip install nodeenv
+nodeenv -p
+npm i express
