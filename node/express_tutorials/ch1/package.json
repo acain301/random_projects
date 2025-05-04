@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "express": "^5.1.0",
-    "http": "^0.0.1-security",
-    "mustache": "^4.2.0"
-  }
-}
