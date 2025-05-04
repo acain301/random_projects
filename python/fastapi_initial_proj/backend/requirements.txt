@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+ruff
+python-dotenv
+psycopg2-binary
+sqlalchemy
+alembic
+pydantic[email]
+passlib[bcrypt]
+python-slugify
