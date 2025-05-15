@@ -2,3 +2,4 @@ node_modules/
 *.swp
 *.pem
 .env
+database/
