@@ -5,3 +5,41 @@ node_modules/
 database/
 *.pyc
 __pycache__/
+
+
+# Ignore the target directory, where Rust builds artifacts.
+target/
+
+# Cargo.lock:
+# For executable projects, you should generally commit Cargo.lock to ensure
+# reproducible builds.
+# For libraries, it's generally best to ignore it to allow dependents to
+# resolve their own dependencies. You can remove the '#' below if you're
+# building a library and want to ignore Cargo.lock.
+# Cargo.lock
+
+# Optional: Ignore backup files created by some editors.
+*.rs.bk
+
+# Optional: Ignore debug symbol files.
+*.pdb
+
+# Optional: Ignore files created by IDEs or editors.
+# Replace these with the specific patterns for your IDE/editor.
+# For example, for VS Code:
+.vscode/
+
+# For IntelliJ IDEA:
+.idea/
+*.iml
+
+# For Vim:
+*.swp
+*.swo
+
+# Other temporary or generated files.
+# For example, you might want to ignore specific log files:
+# *.log
+
+# Or any other files you don't want to track.
+
