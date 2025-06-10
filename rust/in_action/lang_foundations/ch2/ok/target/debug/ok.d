@@ -1,0 +1,1 @@
+/home/leroy/Desktop/Projects/projs/random_projects/rust/in_action/lang_foundations/ch2/ok/target/debug/ok: /home/leroy/Desktop/Projects/projs/random_projects/rust/in_action/lang_foundations/ch2/ok/ok.rs
