@@ -2,7 +2,8 @@ sudo apt update
 sudo apt install python3
 python3 -m virtualenv .venv/random_venv
 sudo apt update && sudo apt upgrade -y
-
+sudo apt install gh
+gh auth login
 
 
 # Install Node.js in virtual environment
@@ -53,3 +54,13 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-
 
 #Create React app
 npx create-­react-­app react-­js-­foundations
+
+
+#Installing MINIKUBE
+#Need to install VirtualBox, Podman or some type of container/virtual machine manager
+#https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary%20download
+
+curl -LO "https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
+
+
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
