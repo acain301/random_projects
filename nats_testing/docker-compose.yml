@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  react-ui:
+    build: ./react-ui
+    networks:
+      - nats-net
+    ports:
+      - "3000:3000"
+    depends_on:
+      - fastapi
+
+  fastapi:
+    build: ./fastapi
+    networks:
+      - nats-net
+    ports:
+      - "8000:8000"
+    depends_on:
+      - grpc-client
+
+  grpc-client:
+    build: ./grpc-client
+    networks:
+      - nats-net
+    depends_on:
+      - nats-server
+
+  nats-server:
+    image: nats:latest
+    networks:
+      - nats-net
+    ports:
+      - "4222:4222"
+
+networks:
+  nats-net:
+    external: true

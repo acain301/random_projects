@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service Subscriber {
+  rpc Subscribe (TopicRequest) returns (stream TopicMessage) {}
+}
+
+message TopicRequest {
+  string topic = 1;
+}
+
+message TopicMessage {
+  string data = 1;
+}
+

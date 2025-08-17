@@ -1,0 +1,4 @@
+grpcio
+grpcio-tools
+nats-py
+
