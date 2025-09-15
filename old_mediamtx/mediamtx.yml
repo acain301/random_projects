@@ -1,0 +1,19 @@
+paths:
+  all:
+    source: publisher
+
+rtsp:
+  session_timeout: 1m30s
+  read_buffer_size: 4MB
+  write_buffer_size: 4MB
+
+hls:
+  enabled: yes
+  address: :8888
+  allowOrigin: '*'
+  alwaysRemux: yes
+  variant: lowLatency
+  segmentCount: 7
+  segmentDuration: 1s
+  partDuration: 200ms
+  muxerCloseAfter: 60s
