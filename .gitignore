@@ -5,7 +5,7 @@ node_modules/
 database/
 *.pyc
 __pycache__/
-
+*.mp4
 
 # Ignore the target directory, where Rust builds artifacts.
 target/
