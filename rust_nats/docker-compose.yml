@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  nats:
+    image: nats:latest
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+
+  python-producer:
+    build: ./python-producer
+    depends_on:
+      - nats
+    environment:
+      - NATS_URL=nats://nats:4222
+
+  websocket-server:
+    build: ./websocket-server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - nats
+
+  react-client:
+    build: ./react-client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - websocket-server
+

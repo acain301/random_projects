@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-jose[cryptography]  # JWT validation (optional for auth)
+requests                   # If interacting with Keycloak's API
+python-dotenv              # Optional, for .env file support
+sqlalchemy                 # If using raw SQLAlchemy
+asyncpg                   # Async PostgreSQL driver
+psycopg2-binary            # If using sync PostgreSQL connection
+python-keycloak            # Optional Keycloak client
+
+
