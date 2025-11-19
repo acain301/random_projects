@@ -1,66 +1,23 @@
-sudo apt update
-sudo apt install python3
-python3 -m virtualenv .venv/random_venv
-sudo apt update && sudo apt upgrade -y
-sudo apt install gh
-gh auth login
+#!/usr/bin/env bash
+set -euo pipefail
 
+# Colors
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+BLINK="\e[5m"
+RESET="\e[0m"
 
-# Install Node.js in virtual environment
+if [[ -z "${VIRTUAL_ENV:-}" ]]; then
+    echo -e "${RED}No virtual environment is active.${RESET}"
+    exit 1
+fi
 
-sudo apt update && sudo apt upgrade -y
-pip install nodeenv
-nodeenv -p
-npm i express
+if ! command -v pytest >/dev/null 2>&1; then
+    echo -e "${RED}pytest is NOT installed in the active virtual environment.${RESET}"
+    exit 1
+fi
 
-
-
-# Install Docker 
-
-1. Unintsall conflicting packages
-for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
-
-
-2. Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl -y
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-3. Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
-
-# UNINSTALL DOCKER
-# sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
-# sudo rm -rf /var/lib/docker
-# sudo rm -rf /var/lib/containerd
-# sudo rm /etc/apt/sources.list.d/docker.list
-# sudo rm /etc/apt/keyrings/docker.asc
-
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose 
-
-
-
-#Create React app
-npx create-­react-­app react-­js-­foundations
-
-
-#Installing MINIKUBE
-#Need to install VirtualBox, Podman or some type of container/virtual machine manager
-#https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary%20download
-
-curl -LO "https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64"
-
-
-sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+echo -e "${GREEN}pytest is installed in the active virtual environment.${RESET}"
+echo -e "${YELLOW}Path to virtual environment ---> $VIRTUAL_ENV${RESET}"
