@@ -34,6 +34,7 @@ display_banner() {
 #
 #                DEV ENVIRONMENT INSTALLER — TOAST
 # =========================================================
+
 EOF
 }
 
