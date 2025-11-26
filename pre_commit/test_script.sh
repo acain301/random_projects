@@ -85,8 +85,8 @@ check_tools() {
         exit "$CUSTOM_EXIT_CODE"
     else
         echo "📂 Found .toml file in: $toml_dir"
-        echo "➡️  Navigate there before installing dependencies:"
-        echo "    cd \"$toml_dir\""
+        echo "➡️  Navigate there and run the command below:"
+        echo "    pip isntall -e .['test','style']"
     fi
 
     # Check required tools
