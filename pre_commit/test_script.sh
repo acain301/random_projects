@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
 
-# =========================================================
-#  ██╗██╗  ██╗ ██████╗ ██████╗ 
-#  ██║██║  ██║██╔═══██╗██╔══██╗
-#  ██║███████║██║   ██║██████╔╝
-#  ██║██╔══██║██║   ██║██╔═══╝ 
-#  ██║██║  ██║╚██████╔╝██║     
-#  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     
-#
-#                DEV ENVIRONMENT INSTALLER — TOAST
-# =========================================================
-
+# ------------------------------
+# DEV ENVIRONMENT INSTALLER — TOAST
 # ------------------------------
 # Pre-commit linting & formatting script
+# Fails fast if venv missing, required tools missing, or .toml not found
 # ------------------------------
 
-CUSTOM_EXIT_CODE=42
-REQUIRED_TOOLS=(black flake8 isort pytest)
+CUSTOM_EXIT_CODE=15
+REQUIRED_TOOLS=(ruff pytest-cov nodeenv pytest)
 
 # ANSI color codes
 RED=$'\033[1;31m'
@@ -27,6 +21,7 @@ RESET=$'\033[0m'
 # ------------------------------
 # Display initial banner
 # ------------------------------
+
 display_banner() {
     cat <<'EOF'
 # =========================================================
@@ -45,6 +40,7 @@ EOF
 # ------------------------------
 # Check for active virtual environment
 # ------------------------------
+
 check_venv() {
     if [[ -z "$VIRTUAL_ENV" ]]; then
         cat <<EOF >&2
@@ -64,6 +60,7 @@ EOF
 # ------------------------------
 # Check for .toml file and required tools
 # ------------------------------
+
 check_tools() {
     # Directory where the script resides
     local script_dir
@@ -103,7 +100,7 @@ check_tools() {
     if [[ "$missing" -eq 1 ]]; then
         echo "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}" >&2
         echo "⚠️  PRE-COMMIT BLOCKED: Missing development tools" >&2
-        echo "${YELLOW}Install tools in your active venv: pip install -e .[test]${RESET}" >&2
+        echo "${YELLOW}Install tools in your active venv: pip install -e .['test','style']${RESET}" >&2
         exit "$CUSTOM_EXIT_CODE"
     fi
 }
@@ -111,6 +108,7 @@ check_tools() {
 # ------------------------------
 # Run local linting & formatting scripts
 # ------------------------------
+
 run_lint_and_format() {
     echo "✔ Running formatting script..."
     if [[ -x "./format.sh" ]]; then
@@ -134,6 +132,7 @@ run_lint_and_format() {
 # ------------------------------
 # Main script
 # ------------------------------
+
 main() {
     display_banner
     check_venv
