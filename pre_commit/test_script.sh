@@ -2,12 +2,30 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# AUTHOR: Randy Michael
+# DATE: 6/12/2007
+# REV: 1.1.A
+# PLATOFRM: Not platform dependent
+
 # ------------------------------
 # DEV ENVIRONMENT INSTALLER — TOAST
 # ------------------------------
 # Pre-commit linting & formatting script
 # Fails fast if venv missing, required tools missing, or .toml not found
 # ------------------------------
+
+
+
+###################################################################
+##################### BEGINNING OF MAIN ###########################
+###################################################################
+
+
+###################################################################
+################## DEFINE FUNCTIONS HERE ##########################
+###################################################################
+
+###################################################################
 
 CUSTOM_EXIT_CODE=15
 REQUIRED_TOOLS=(ruff pytest-cov nodeenv pytest)
