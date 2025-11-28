@@ -9,8 +9,8 @@ __pycache__/
 **/*.mp4
 !.gitignore
 !.gitattributes
-.*
-.*/
+# .*
+# .*/
 
 # Ignore the target directory, where Rust builds artifacts.
 target/
